@@ -44,7 +44,10 @@ public class Basket {
         return items.stream().
                 collect(toMap(Item::getName,
                         Function.identity(),
-                        (item1, item2) -> new Item(item1.getName(), item1.getPrice(), addQuantities(item1, item2))));
+                        (item1, item2) -> new Item(
+                                                item1.getName(),
+                                                item1.getPrice(),
+                                                addQuantities(item1, item2))));
     }
 
     private BigDecimal applyPromo(Map<String, Item> itemTypeToItem, Promotion promo) {

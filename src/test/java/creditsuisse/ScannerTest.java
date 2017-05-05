@@ -5,7 +5,6 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -19,10 +18,12 @@ public class ScannerTest {
     Scanner scanner = new Scanner();
 
     @Test
-    public void shouldScanStandardItems() throws Exception {
+    public void shouldGiveTotalNoPromo() throws Exception {
 
         Basket basket = new Basket();
-        basket.addAll(new Item("Apples", new BigDecimal("0.35")), new Item("Bananas", new BigDecimal("0.20")));
+        basket.addAll(
+                new Item("Apples", new BigDecimal("0.35")),
+                new Item("Bananas", new BigDecimal("0.20")));
         List<Promotion> promotions = emptyList();
 
         BigDecimal result = scanner.scan(basket, promotions);
@@ -31,14 +32,15 @@ public class ScannerTest {
     }
 
     @Test
-    public void shouldScanStandardAndPromoItems() throws Exception {
+    public void shouldGiveTotalWithPromo() throws Exception {
 
         Basket basket = new Basket();
         basket.addAll(
                 new Item("Apples", new BigDecimal("0.35")),
+                new Item("Apples", new BigDecimal("0.35")),
+                new Item("Apples", new BigDecimal("0.35")),
                 new Item("Bananas", new BigDecimal("0.20")),
-                new Item("Melons", new BigDecimal("0.50")),
-                new Item("Melons", new BigDecimal("0.50")),
+                new Item("Bananas", new BigDecimal("0.20")),
                 new Item("Melons", new BigDecimal("0.50")),
                 new Item("Melons", new BigDecimal("0.50")),
                 new Item("Limes", new BigDecimal("0.15")),
@@ -50,7 +52,7 @@ public class ScannerTest {
 
         BigDecimal result = scanner.scan(basket, promotions);
 
-        Assert.assertThat(result, CoreMatchers.is(CoreMatchers.equalTo(new BigDecimal("1.85"))));
+        Assert.assertThat(result, CoreMatchers.is(CoreMatchers.equalTo(new BigDecimal("2.25"))));
     }
 
 
