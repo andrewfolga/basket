@@ -9,12 +9,9 @@ import java.util.List;
  */
 public class Scanner {
 
-    private final List<Promotion> promotions = new ArrayList<>();
-
     public BigDecimal scan(Basket basket, List<Promotion> promotions) {
 
-        BigDecimal totalCost = basket.calculateTotalCost(promotions);
+        return basket.calculateTotalCost(promotions);
 
-        return totalCost;
     }
 }

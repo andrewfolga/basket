@@ -33,11 +33,11 @@ public class Basket {
 
         Map<String, Item> itemTypeToItem = combineSameItems();
 
-        BigDecimal promoPrice = promotions.stream().
+        BigDecimal savings = promotions.stream().
                 map(promo -> applyPromo(itemTypeToItem, promo)).
                 reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        return totalPrice.subtract(promoPrice);
+        return totalPrice.add(savings);
     }
 
     private Map<String, Item> combineSameItems() {
@@ -51,7 +51,7 @@ public class Basket {
         return promo.apply(itemTypeToItem.get(promo.getItemName()));
     }
 
-    private BigDecimal addQuantities(Item item1, Item item2) {
-        return item1.getQuantity().add(item2.getQuantity());
+    private Integer addQuantities(Item item1, Item item2) {
+        return item1.getQuantity() + item2.getQuantity();
     }
 }
