@@ -1,7 +1,5 @@
 package creditsuisse;
 
-import org.apache.commons.lang3.Validate;
-
 import java.math.BigDecimal;
 import java.util.List;
 
