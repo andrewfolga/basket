@@ -8,10 +8,28 @@ import java.math.BigDecimal;
 public class Item {
 
     private final String name;
-    private final BigDecimal bigDecimal;
+    private final BigDecimal price;
+    private final BigDecimal quantity;
 
-    public Item(String name, BigDecimal bigDecimal) {
+    public Item(String name, BigDecimal price, BigDecimal quantity) {
         this.name = name;
-        this.bigDecimal = bigDecimal;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public Item(String name, BigDecimal price) {
+        this(name, price, BigDecimal.ONE);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public BigDecimal getQuantity() {
+        return quantity;
     }
 }

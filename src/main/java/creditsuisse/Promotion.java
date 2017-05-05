@@ -18,6 +18,17 @@ public class Promotion implements Function<Item, BigDecimal> {
         this.targerCount = targerCount;
     }
 
+    public String getItemName() {
+        return itemName;
+    }
+
+    public Integer getTriggerCount() {
+        return triggerCount;
+    }
+
+    public Integer getTargerCount() {
+        return targerCount;
+    }
 
     @Override
     public BigDecimal apply(Item item) {

@@ -13,8 +13,8 @@ public class Scanner {
 
     public BigDecimal scan(Basket basket, List<Promotion> promotions) {
 
-        basket.calculateTotalCost(promotions);
+        BigDecimal totalCost = basket.calculateTotalCost(promotions);
 
-        return BigDecimal.ZERO;
+        return totalCost;
     }
 }
