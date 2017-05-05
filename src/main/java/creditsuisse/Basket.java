@@ -1,7 +1,7 @@
 package creditsuisse;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static java.util.Arrays.asList;
@@ -20,5 +20,10 @@ public class Basket {
 
     public void addAll(Item... items) {
         asList(items).stream().forEach(item -> add(item));
+    }
+
+    public BigDecimal calculateTotalCost(List<Promotion> promotions) {
+
+        return BigDecimal.ZERO;
     }
 }

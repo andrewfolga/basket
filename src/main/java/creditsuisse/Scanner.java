@@ -1,13 +1,19 @@
 package creditsuisse;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by andrzejfolga on 05/05/2017.
  */
 public class Scanner {
 
-    public BigDecimal scan(Basket basket) {
+    private final List<Promotion> promotions = new ArrayList<>();
+
+    public BigDecimal scan(Basket basket, List<Promotion> promotions) {
+
+        basket.calculateTotalCost(promotions);
 
         return BigDecimal.ZERO;
     }
