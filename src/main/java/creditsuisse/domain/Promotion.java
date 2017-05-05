@@ -1,4 +1,4 @@
-package creditsuisse;
+package creditsuisse.domain;
 
 import org.apache.commons.lang3.Validate;
 

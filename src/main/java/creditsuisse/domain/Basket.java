@@ -1,10 +1,11 @@
-package creditsuisse;
+package creditsuisse.domain;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 import static java.util.Arrays.asList;
 import static java.util.stream.Collectors.toMap;
@@ -22,6 +23,10 @@ public class Basket {
 
     public void addAll(Item... itemsToAdd) {
         items.addAll(asList(itemsToAdd));
+    }
+
+    public void addAll(List<Item> itemsToAdd) {
+        items.addAll(itemsToAdd);
     }
 
     public BigDecimal calculateTotalCost(List<Promotion> promotions) {
@@ -59,5 +64,9 @@ public class Basket {
 
     private Integer addQuantities(Item item1, Item item2) {
         return item1.getQuantity() + item2.getQuantity();
+    }
+
+    public boolean hasItems(final Predicate<List> predicate) {
+        return predicate.test(items);
     }
 }

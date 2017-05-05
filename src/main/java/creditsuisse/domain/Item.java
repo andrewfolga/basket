@@ -1,6 +1,7 @@
-package creditsuisse;
+package creditsuisse.domain;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * Created by andrzejfolga on 05/05/2017.
@@ -32,5 +33,20 @@ public class Item {
 
     public Integer getQuantity() {
         return quantity;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return Objects.equals(name, item.name) &&
+                Objects.equals(price, item.price) &&
+                Objects.equals(quantity, item.quantity);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price, quantity);
     }
 }
