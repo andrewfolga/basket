@@ -26,18 +26,22 @@ public class Basket {
     }
 
     public BigDecimal calculateTotalCost(List<Promotion> promotions) {
+        BigDecimal totalPrice = BigDecimal.ZERO;
+        if (!items.isEmpty()) {
+            totalPrice = items.stream().
+                    map(item -> item.getPrice()).
+                    reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        BigDecimal totalPrice = items.stream().
-                map(item -> item.getPrice()).
-                reduce(BigDecimal.ZERO, BigDecimal::add);
+            Map<String, Item> itemTypeToItem = combineSameItems();
 
-        Map<String, Item> itemTypeToItem = combineSameItems();
+            BigDecimal savings = promotions.stream().
+                    map(promo -> applyPromo(itemTypeToItem, promo)).
+                    reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        BigDecimal savings = promotions.stream().
-                map(promo -> applyPromo(itemTypeToItem, promo)).
-                reduce(BigDecimal.ZERO, BigDecimal::add);
+            totalPrice = totalPrice.add(savings);
+        }
 
-        return totalPrice.add(savings);
+        return totalPrice;
     }
 
     private Map<String, Item> combineSameItems() {

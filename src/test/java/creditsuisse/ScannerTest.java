@@ -32,6 +32,19 @@ public class ScannerTest {
     }
 
     @Test
+    public void shouldGiveNoTotalIfBasketEmptyNoPromo() throws Exception {
+
+        Basket basket = new Basket();
+        List<Promotion> promotions = asList(
+                new Promotion("Melons", 2, 1),
+                new Promotion("Limes", 3, 2));
+
+        BigDecimal result = scanner.scan(basket, promotions);
+
+        Assert.assertThat(result, CoreMatchers.is(CoreMatchers.equalTo(BigDecimal.ZERO)));
+    }
+
+    @Test
     public void shouldGiveTotalWithPromo() throws Exception {
 
         Basket basket = new Basket();
