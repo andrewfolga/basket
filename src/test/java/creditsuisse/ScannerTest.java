@@ -15,7 +15,7 @@ import static java.util.Collections.emptyList;
  */
 public class ScannerTest {
 
-    Scanner scanner = new Scanner();
+    private Scanner scanner = new Scanner();
 
     @Test
     public void shouldGiveTotalNoPromo() throws Exception {
